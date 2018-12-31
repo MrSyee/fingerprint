@@ -12,16 +12,16 @@
 `python main.py --model ConvNet --mode train`
 
 ## File Description
-**main**
+**main.py**
 - 실행 파일. train 또는 eval 명령어를 통해 모델을 학습하거나 학습된 모델을 테스트 함.
 
-**ImageLoader**
+**ImageLoader.py**
 - 해당 경로에 있는 data를 pytorch dataloader로 만들어 줌.
 
-**logger**
+**logger.py**
 - tensorboard 또는 txt 파일로 로그를 작성하기 위한 코드.
 
-**model/**
+**model/*.py**
 - ANN, CNN 모델이 작성되있음.
 
 ## Details

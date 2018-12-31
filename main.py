@@ -40,10 +40,16 @@ with open("data_path.txt", 'r') as file:
     TRAIN_DATASET_PATH = file_list[0].strip()
     TEST_DATASET_PATH = file_list[1].strip()
 
-MODEL_SAVE_PATH = './save/' + args.save_model
+MODEL_SAVE_PATH = './save/' + args.model
 MODEL_SAVE_RATE = 1
-MODEL_LOG_PATH = './logs/' + args.save_model
-T_B_GRAPH_PATH = './graph/' + args.save_model + NOWTIME
+MODEL_LOG_PATH = './logs/' + args.model
+T_B_GRAPH_PATH = './graph/' + args.model + NOWTIME
+
+if args.save_model is not None:
+    MODEL_SAVE_PATH = './save/' + args.save_model
+    MODEL_SAVE_RATE = 1
+    MODEL_LOG_PATH = './logs/' + args.save_model
+    T_B_GRAPH_PATH = './graph/' + args.save_model + NOWTIME
 
 BATCH_SIZE = args.batchsize
 LEARNING_RATE = 0.0001
