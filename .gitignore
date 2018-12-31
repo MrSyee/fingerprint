@@ -1,0 +1,8 @@
+graph/
+save/
+logs/
+__pycache__/
+*/__pycache__/
+
+test.py
+data_path.txt
