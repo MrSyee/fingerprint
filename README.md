@@ -9,7 +9,13 @@
 - pytorch 0.4.1
 
 ## Run the example
-`python main.py --model ConvNet --mode train`
+**train**
+
+`python main.py --model <model_name> --save <save_name> --mode train`
+
+**eval**
+
+`python main.py --model <model_name> --save <save_name> --mode eval`
 
 ## File Description
 **main.py**

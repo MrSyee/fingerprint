@@ -116,24 +116,6 @@ class ConvNet_half(nn.Module):
         out = self.fc(out)
         return F.log_softmax(out, dim=1)
 
-class _conv_ds_res(nn.Module):
-    def __init__(self):
-        super(_conv_ds_res, self).__init__()
-
-        def conv_dw(inp, oup, stride):
-            return nn.Sequential(
-                nn.Conv2d(inp, inp, 3, stride, padding=1, groups=inp, bias=False),
-                # nn.BatchNorm2d(inp),
-                nn.ReLU(inplace=True),
-
-                nn.Conv2d(inp, oup, 1, 1, padding=0, bias=False),
-                # nn.BatchNorm2d(oup),
-                nn.ReLU(inplace=True),
-            )
-
-    def forward(self, x):
-        pass
-
 
 class ConvNet_ds(nn.Module):
     def __init__(self, num_classes=10):
@@ -150,6 +132,17 @@ class ConvNet_ds(nn.Module):
                 nn.ReLU(inplace=True)
             )
 
+        def conv_dw(inp, oup, stride):
+            return nn.Sequential(
+                nn.Conv2d(inp, inp, 3, stride, padding=1, groups=inp, bias=False),
+                # nn.BatchNorm2d(inp),
+                nn.ReLU(inplace=True),
+
+                nn.Conv2d(inp, oup, 1, 1, padding=0, bias=False),
+                # nn.BatchNorm2d(oup),
+                nn.ReLU(inplace=True),
+                )
+                
         self.conv = nn.Sequential(
             # image 1 x 57 x 114
             # 114 57 29 15 8 4 2
@@ -163,7 +156,7 @@ class ConvNet_ds(nn.Module):
         self.fc = nn.Sequential(
             nn.Linear(2 * 4 * 12, 32),
             nn.ReLU(True),
-            nn.Linear(128, num_classes)
+            nn.Linear(32, num_classes)
         )
 
     def forward(self, x):
